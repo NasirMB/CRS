@@ -1,0 +1,120 @@
+@config '../tailwind.config.ts';
+@import 'tailwindcss';
+@import 'leaflet/dist/leaflet.css';
+
+:root {
+  --font-geist: 'Geist', system-ui, sans-serif;
+  --font-geist-mono: 'Geist Mono', monospace;
+}
+
+@layer base {
+  * {
+    @apply border-transparent;
+  }
+
+  body {
+    @apply text-slate-900 antialiased overflow-x-hidden;
+    background:
+      radial-gradient(circle at 8% 2%, rgba(245, 230, 200, 0.55), transparent 24%),
+      radial-gradient(circle at 92% 0%, rgba(221, 234, 215, 0.52), transparent 22%),
+      linear-gradient(180deg, #fffdf8 0%, #ffffff 34%, #ffffff 100%);
+  }
+
+  a {
+    @apply transition-colors;
+  }
+}
+
+@layer utilities {
+  .page-shell {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-space {
+    @apply py-12 md:py-16;
+  }
+
+  .section-kicker {
+    @apply text-xs sm:text-sm uppercase tracking-[0.18em] font-semibold;
+    color: #174A2A;
+  }
+
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold tracking-tight;
+    color: #0B2E1A;
+  }
+
+  .surface-card {
+    @apply rounded-2xl border border-[#e7dcc7] bg-white shadow-[0_14px_32px_rgba(88,64,36,0.10)];
+  }
+
+  .grain-panel {
+    background-image:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 252, 245, 0.9)),
+      repeating-linear-gradient(135deg, rgba(23, 74, 42, 0.03) 0 1px, transparent 1px 8px);
+  }
+
+  .container-fluid {
+    @apply w-full max-w-full px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Pulsing marker animation for map */
+  @keyframes pulse-ring {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(2.5);
+      opacity: 0;
+    }
+  }
+
+  .animate-pulse-ring {
+    animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  /* Smooth fade in animation */
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.5s ease-in;
+  }
+
+  /* Glow effect for cards */
+  @keyframes glow {
+    0%, 100% {
+      box-shadow: 0 0 5px rgba(23, 74, 42, 0.5);
+    }
+    50% {
+      box-shadow: 0 0 20px rgba(23, 74, 42, 0.8);
+    }
+  }
+
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite;
+  }
+
+  .leaflet-custom-marker-wrap {
+    background: transparent;
+    border: 0;
+  }
+
+  .leaflet-custom-marker {
+    display: block;
+    width: 14px;
+    height: 14px;
+    border-radius: 9999px;
+    background: #174A2A;
+    border: 2px solid #ffffff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  }
+
+}
